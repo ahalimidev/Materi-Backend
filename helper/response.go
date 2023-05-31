@@ -1,9 +1,5 @@
 package helper
 
-import (
-	"github.com/go-playground/validator/v10"
-)
-
 // Response is used for static shape json return
 type Response struct {
 	Message string      `json:"message"`
@@ -19,14 +15,4 @@ func APIResponse(message string, code int, status string, data interface{}) Resp
 	}
 
 	return jsonResponse
-}
-
-func FormatValidationError(err error) []string {
-	var errors []string
-
-	for _, e := range err.(validator.ValidationErrors) {
-		errors = append(errors, e.Error())
-	}
-
-	return errors
 }
